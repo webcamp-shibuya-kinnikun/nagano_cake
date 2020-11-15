@@ -1,0 +1,2 @@
+class DelivaryAdress < ApplicationRecord
+end

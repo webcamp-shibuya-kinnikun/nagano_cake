@@ -10,6 +10,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= link_to 'logout', destroy_customer_session_path, method: :delete %>
+    </header>
+    
+    <div class="body">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+    
   </body>
 </html>

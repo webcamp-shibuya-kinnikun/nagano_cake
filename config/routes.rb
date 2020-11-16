@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :customers
-  devise_for :admins
+
+  devise_for :admins, controllers: {
+    # registrations: 'admins/registrations',
+     sessions: 'admins/devise/sessions',
+     passwords: 'admins/devise/passwords'
+  }
   namespace :admins do
     get 'homes/top'
   end
@@ -39,6 +44,9 @@ Rails.application.routes.draw do
     get 'addresses/update'
     get 'addresses/destroy'
   end
+
+
+
   namespace :public do
     get 'custemers/show'
     get 'custemers/edit'
@@ -69,6 +77,6 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/about'
   end
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

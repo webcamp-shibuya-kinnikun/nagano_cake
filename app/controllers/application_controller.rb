@@ -16,9 +16,20 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     public_items_index_path
   end
+  
+  
+  # def after_sign_in_path_for(resource)
+  #   public_items_index_path
+  # end
+  # sign_in後のAdminとCustomerの遷移先の記述
   def after_sign_in_path_for(resource)
-    public_items_index_path
+    case resource
+    when Admin
+      admins_homes_top_path
+    when Customer
+      public_items_index_path
+    end
   end
 
-
+  
 end

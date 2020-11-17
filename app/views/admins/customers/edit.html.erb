@@ -1,2 +1,63 @@
-<h1>Admins::Customers#edit</h1>
-<p>Find me in app/views/admins/customers/edit.html.erb</p>
+<h1><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h1>
+
+<div class="form-horizontal">
+  <%= form_with model:@customer, url:admins_customer_path, local: true do |f| %>
+    <div>会員ID　<%= @customer.id %></div>
+    <div class="form-group">
+      <%= f.label "氏名", class: "col-sm-4 control-label" %>
+      <div class="col-sm-8" >
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "フリガナ", class: "col-sm-4 control-label" %>
+      <div class="col-sm-8" >
+        <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %>
+        <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "郵便番号", class: "col-sm-4 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+      </div>
+      </div>
+
+    <div class="form-group">
+      <%= f.label "住所", class: "col-sm-4 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "電話番号(ハイフンなし)", class: "col-sm-4 control-label"%>
+      <div class="col-sm-8">
+        <%= f.text_field :phone_nuber, autofocus: true, autocomplete: "phone_nuber" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "メールアドレス", class: "col-sm-4 control-label" %>
+      <div class="col-sm-8">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+
+    <div class="form-check">
+      <%= f.label "会員ステータス", class: "col-sm-4 control-label" %>
+      <div class="col-sm-8">
+        <%= f.check_box :is_valid, {:checked => true} %>有効
+        <%= f.check_box :is_valid %>退会済み
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "変更を保存する" %>
+    </div>
+
+  <% end %>
+</div>

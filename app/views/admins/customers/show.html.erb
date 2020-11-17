@@ -1,6 +1,11 @@
 <h1><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h1>
 
-<p>顧客ID　<%= @customer.id %></p>
+顧客ID　<%= @customer.id %>
+<% if @customer.is_valid == false %>
+  有効
+<% else %>
+  退会済み
+<% end %>
 <p>氏名  <%= @customer.last_name + @customer.first_name %></p>
 <p>フリガナ  <%= @customer.kana_last_name + @customer.kana_first_name %></p>
 <p>郵便番号  <%= @customer.postal_code %></p>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
   namespace :admins do
-    get 'orders_datals/update'
+    get 'orders_details/update'
   end
   namespace :admins do
     get 'orders/index'
@@ -29,13 +29,10 @@ Rails.application.routes.draw do
     get 'items/create'
     get 'items/show'
     get 'items/edit'
-    get 'items/updete'
+    get 'items/update'
   end
   namespace :admins do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/updete'
+    resources :customers, only: [:index, :show, :edit, :update, :destroy]
   end
   namespace :public do
     get 'addresses/index'

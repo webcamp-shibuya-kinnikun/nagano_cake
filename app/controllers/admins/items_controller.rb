@@ -14,6 +14,6 @@ class Admins::ItemsController < ApplicationController
   def edit
   end
 
-  def updete
+  def update
   end
 end

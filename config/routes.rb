@@ -45,14 +45,12 @@ Rails.application.routes.draw do
     get 'addresses/destroy'
   end
 
-
-
   namespace :public do
-    get 'custemers/show'
-    get 'custemers/edit'
-    get 'custemers/update'
-    get 'custemers/unsubscribe'
-    get 'custemers/withdraw'
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+    get 'customers/unsubscribe'
+    get 'customers/withdraw'
   end
   namespace :public do
     get 'orders/new'

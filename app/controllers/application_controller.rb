@@ -13,11 +13,11 @@ class ApplicationController < ActionController::Base
 
 
   private
-  def after_sign_up_path_for(resource)
-    public_items_index_path
-  end
-  
-  
+    def after_sign_up_path_for(resource)
+      items_index_path
+    end
+
+
   # def after_sign_in_path_for(resource)
   #   public_items_index_path
   # end
@@ -27,9 +27,9 @@ class ApplicationController < ActionController::Base
     when Admin
       admins_homes_top_path
     when Customer
-      public_items_index_path
+      items_index_path
     end
   end
 
-  
+
 end

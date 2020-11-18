@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   private
     def after_sign_up_path_for(resource)
-      items_index_path
+      items_path
     end
 
 
@@ -25,9 +25,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Admin
-      admins_homes_top_path
+      admins_top_path
     when Customer
-      items_index_path
+      items_path
     end
   end
 

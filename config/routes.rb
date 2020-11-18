@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   }
 
   root 'public/homes#top'
-  
+
   namespace :admins do
     get '/top' => 'homes#top'
   end
-  
+
   namespace :admins do
     resources :orders, only: [:index, :show, :update]
     resources :orders_details, only: [:update]
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
   end
-  
+
   scope module: :public do
     resources :customers,only: [:show, :edit, :update] do
   		collection do
@@ -34,10 +34,10 @@ Rails.application.routes.draw do
   	  end
   	end
   end
-  
-　scope module: :public do
-    resources :addresses, only: [:index, :create, :edit, :update, :destroy]  
-    resources :items, only: [:index, :show]  
+
+ scope module: :public do
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :items, only: [:index, :show]
     get 'customers/my_page' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
     patch 'customers' => 'customers#update'
@@ -57,5 +57,5 @@ Rails.application.routes.draw do
     #get 'homes/top'
     get '/about' => 'homes#about'
   end
-  
+
 end

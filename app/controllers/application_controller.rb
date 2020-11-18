@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(
-      :sign_up, keys: [:last_name, :first_name, :kana_first_name, :kana_last_name, :postal_code, :address, :phone_nuber, :email]
+      :sign_up, keys: [:last_name, :first_name, :kana_first_name, :kana_last_name, :postal_code, :address, :phone_number, :email]
       )
     devise_parameter_sanitizer.permit(
-      :update, keys: [:last_name, :first_name, :kana_first_name, :kana_last_name, :postal_code, :address, :phone_nuber, :email]
+      :update, keys: [:last_name, :first_name, :kana_first_name, :kana_last_name, :postal_code, :address, :phone_number, :email]
       )
   end
 
@@ -16,8 +16,7 @@ class ApplicationController < ActionController::Base
     def after_sign_up_path_for(resource)
       items_path
     end
-
-
+    
   # def after_sign_in_path_for(resource)
   #   public_items_index_path
   # end

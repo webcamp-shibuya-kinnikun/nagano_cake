@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
   validates :kana_last_name, presence: true
   validates :postal_code, presence: true
   validates :address, presence: true
-  validates :phone_nuber, presence: true
+  validates :phone_number, presence: true
   validates :email, presence: true
 
   def active_for_authentication?

@@ -27,6 +27,15 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
+    resources :customers,only: [:show, :edit, :update] do
+  		collection do
+  	     get 'unsubscribe'
+  	     patch 'withdraw'
+  	  end
+  	end
+  end
+  
+　scope module: :public do
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]  
     resources :items, only: [:index, :show]  
     get 'customers/my_page' => 'customers#show'
@@ -48,4 +57,5 @@ Rails.application.routes.draw do
     #get 'homes/top'
     get '/about' => 'homes#about'
   end
+  
 end

@@ -5,7 +5,7 @@ Customer.create!(
   kana_last_name: 'ヤマダ',
   postal_code: '0001111',
   address: '東京都中央区',
-  phone_nuber: '09011112222',
+  phone_number: '09011112222',
   email: 'test@test.com',
   password: '111111'
 )

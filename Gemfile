@@ -69,7 +69,7 @@ gem "bootstrap-sass", '~> 3.3.6'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "pry-byebug"
-gem "rails_admin"
+#gem "rails_admin"
 gem "jp_prefecture"
 gem "ancestry"
 gem "kaminari"

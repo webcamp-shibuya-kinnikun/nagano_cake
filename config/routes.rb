@@ -45,16 +45,18 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update, :destroy]
   end
   scope module: :public do
-    get 'addresses/index'
-    get 'addresses/create'
-    get 'addresses/edit'
-    get 'addresses/update'
-    get 'addresses/destroy'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
+    get 'homes/top'
+    get 'homes/about'
+
+    resources :customers,only: [:show, :edit, :update] do
+  		collection do
+  	     get 'unsubscribe'
+  	     patch 'withdraw'
+  	  end
+  	end
+
+    resources :addresses,only: [:show, :create, :edit, :update, :destroy]
+
     get 'orders/new'
     get 'orders/confirm'
     get 'orders/create'
@@ -68,8 +70,6 @@ Rails.application.routes.draw do
     get 'cart_items/create'
     get 'items/index'
     get 'items/show'
-    get 'homes/top'
-    get 'homes/about'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

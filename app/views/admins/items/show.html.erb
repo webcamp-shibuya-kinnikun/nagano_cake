@@ -1,2 +1,8 @@
-<h1>Admins::Items#show</h1>
-<p>Find me in app/views/admins/items/show.html.erb</p>
+
+<%= @item.genre.name %>
+<%= @item.name %>
+<%= @item.explanation %>
+<%= @item.tax_out_price %>
+<%= attachment_image_tag @item, :image, :fill, 40, 40, class: "pull-left profile-thumb" %>
+
+<%= link_to "Edit", edit_admins_item_path(@item), class: "btn btn-success"%>

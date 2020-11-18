@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   }
 
   root 'public/homes#top'
-  
+
   namespace :admins do
     get '/top' => 'homes#top'
   end
-  
+
   namespace :admins do
     resources :orders, only: [:index, :show, :update]
     resources :orders_details, only: [:update]
@@ -25,10 +25,10 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
   end
-  
+
   scope module: :public do
-    resources :addresses, only: [:index, :create, :edit, :update, :destroy]  
-    resources :items, only: [:index, :show]  
+    resources :delivary_addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :items, only: [:index, :show]
     get 'customers/my_page' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
     patch 'customers' => 'customers#update'
@@ -40,11 +40,13 @@ Rails.application.routes.draw do
     get 'orders/thanks' => 'orders#thanks'
     get 'orders' => 'orders#index'
     get 'orders/:id' => 'orders#show'
-    get 'cart_items' => 'cart_items#index'
-    patch 'cart_items/:id' => 'cart_items#update'
-    delete 'cart_items/:id' => 'cart_items#destroy'
-    delete 'cart_items/all' => 'cart_items#destroy_all'
-    post 'cart_items' => 'cart_items#create'
+
+    resources :cart_items,only: [:index,:update,:create,:destroy] do
+      collection do
+        delete '/' => 'cart_items#all_destroy'
+      end
+    end
+
     #get 'homes/top'
     get '/about' => 'homes#about'
   end

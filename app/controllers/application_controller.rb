@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     def after_sign_up_path_for(resource)
       items_path
     end
-    
+
   # def after_sign_in_path_for(resource)
   #   public_items_index_path
   # end
@@ -30,5 +30,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_cart_item
+    @cart_item = CartItem.find(params[:id])
+  end
 
 end

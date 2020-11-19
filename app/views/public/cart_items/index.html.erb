@@ -40,6 +40,11 @@
             <td class="warning">合計金額</td>
             <td class="text-right" id='total_price'>
               ¥<%#= total_price(@cart_items).to_s(:delimited) %>
+              <% sum = 0 %>
+              <% @cart_items.each do |cart_item| %>
+                <% sum += (tax_price(cart_item.item.tax_out_price) * cart_item.quantity) %>
+              <% end %>
+              <%= sum.to_s(:delimited) %>
             </td>
           </tr>
         </thead>

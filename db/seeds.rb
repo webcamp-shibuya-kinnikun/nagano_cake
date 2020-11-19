@@ -105,3 +105,10 @@ Item.create!(
     }
   ]
   )
+
+  ShippingAddress.create!(
+    name: "test",
+    postal_code: "1234567",
+    address: "東京都港区六本木6-10-1六本木ヒルズ森タワー 10階403",
+    customer_id: 1
+  )

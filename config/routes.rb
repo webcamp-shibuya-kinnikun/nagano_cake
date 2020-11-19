@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :delivary_addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :delivery_addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     get 'customers/my_page' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
@@ -45,7 +45,6 @@ Rails.application.routes.draw do
         delete '/' => 'cart_items#all_destroy'
       end
     end
-    #get 'homes/top'
     get '/about' => 'homes#about'
   end
 end

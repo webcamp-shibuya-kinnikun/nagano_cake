@@ -18,8 +18,8 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = current_customer.cart_items.new(params_cart_item)
-    　# カートの中に同じ商品が重複しないようにして　もともとあった商品と新しく数量を追加商品の数量を合わせる
-  　@update_cart_item =  CartItem.find_by(item: @cart_item.item)
+    # カートの中に同じ商品が重複しないようにしてもともとあった商品と新しく数量を追加商品の数量を合わせる
+    @update_cart_item =  CartItem.find_by(item: @cart_item.item)
     if @update_cart_item.present? && @cart_item.valid?
       @cart_item.quantity += @update_cart_item.quantity
       @update_cart_item.destroy
@@ -27,7 +27,7 @@ class Public::CartItemsController < ApplicationController
 
     if @cart_item.save
       flash[:notice] = "#{@cart_item.item.name}をカートに追加しました"
-      redirect_to items_path
+      redirect_to cart_items_path
     else
       @item = Item.find(params[:cart_item][:item_id])
       @cart_item = CartItem.new
@@ -43,11 +43,11 @@ class Public::CartItemsController < ApplicationController
     @total = total_price(@cart_items).to_s(:delimited)
   end
 
-  def destroy_all
+  def all_destroy
     @cart_items = current_customer.cart_items
     @cart_items.destroy_all
     flash[:alert] = "カートの商品を全て削除しました"
-    redirect_to cart_item_path
+    redirect_to cart_items_path
   end
 
   private

@@ -40,13 +40,11 @@ Rails.application.routes.draw do
     get 'orders/thanks' => 'orders#thanks'
     get 'orders' => 'orders#index'
     get 'orders/:id' => 'orders#show'
-
     resources :cart_items,only: [:index,:update,:create,:destroy] do
       collection do
         delete '/' => 'cart_items#all_destroy'
       end
     end
-
     #get 'homes/top'
     get '/about' => 'homes#about'
   end

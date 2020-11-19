@@ -1,2 +1,0 @@
-class DelivaryAdress < ApplicationRecord
-end

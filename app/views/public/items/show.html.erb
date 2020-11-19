@@ -1,4 +1,10 @@
-<h1>商品名</h1>
-<p>説明</p>
-<p>税込価格</p>
+商品画像
+<h1><%= @item.name %></h1>
+<p><%= @item.explanation %></p>
+<p>¥<%= @price %>(税込)</p>
 
+<%= form_with model:@cart_item do |f| %>
+  <%= f.hidden_field :item_id, value: @item.id %>
+  <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+  <%= f.submit "カートに入れる" %>
+<% end %>

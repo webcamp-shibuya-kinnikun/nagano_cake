@@ -36,7 +36,7 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @cart_item.destroy
     flash.now[:alert] = "#{@cart_item.item.name}を削除しました"
     @cart_items = current_cart

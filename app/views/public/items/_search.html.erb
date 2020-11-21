@@ -1,0 +1,8 @@
+<div class="col-xs-3">
+  <h1>ジャンル</h1>
+  <div>
+    <% genres.each do |genre| %>
+      <p><%= link_to genre.name, items_path(genre_id: genre.id) %></p>
+    <% end %>
+  </div>
+</div>

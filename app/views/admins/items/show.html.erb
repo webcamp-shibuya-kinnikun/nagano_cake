@@ -1,7 +1,8 @@
+<h1>商品詳細</h1>
 
-<%= @item.genre.name %>
 <%= @item.name %>
 <%= @item.explanation %>
+<%= @item.genre.name %>
 <%= @item.tax_out_price %>
 <%= attachment_image_tag @item, :image, :fill, 40, 40, class: "pull-left profile-thumb" %>
 

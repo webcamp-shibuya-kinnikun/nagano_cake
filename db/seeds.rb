@@ -135,7 +135,7 @@ Address.create!(
     #   postal_code: '123456',
     #   address: '東京都港区'
     # },
-    
+
     {
       id: 2,
       customer_id: 1,
@@ -143,6 +143,14 @@ Address.create!(
       postal_code: '111111',
       address: '東京都千代田区丸の内'
     }
-    
+
   ]
-)
+
+  )
+
+  ShippingAddress.create!(
+    name: "test",
+    postal_code: "1234567",
+    address: "東京都港区六本木6-10-1六本木ヒルズ森タワー 10階403",
+    customer_id: 1
+  )

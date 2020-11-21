@@ -45,7 +45,6 @@ Rails.application.routes.draw do
         delete '/' => 'cart_items#all_destroy'
       end
     end
-    #get 'homes/top'
     get '/about' => 'homes#about'
   end
 end

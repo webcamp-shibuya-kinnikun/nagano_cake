@@ -1,2 +1,41 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<h1>確認画面</h1>
+
+<% @cart_item.each do |cart_item|%>
+  <div><%= cart_item.item.name %></div>
+  <div><%= cart_item.item.tax_out_price %>円</div>
+  <div><%= cart_item.quantity %>個</div>
+<% end %>
+      <div>
+        送料<%= @postage %>円
+      </div>
+      <div>
+        請求額<%= @total_price %>円
+      </div>
+
+
+<%= form_for @order do |f| %>
+    <div class="field">
+      <%= f.label :氏名 %>
+      <%= f.text_field :name, size: 40,readonly: true %>
+    </div>
+    <div class="field">
+      <%= f.label :郵便番号 %>
+      <%= f.text_area :postal_code, rows: 3, cols: 40 ,readonly: true %>
+    </div>
+    <div class="field">
+      <%= f.label :住所 %>
+      <%= f.text_area :address, rows: 3, cols: 40,readonly: true %>
+    </div>
+    <div class="field">
+      <%= f.label :お支払い方法 %>
+      <%= f.select(:payment_method, [['選択して下さい', ''],['クレジットカード', 0],['銀行振込', 1]]) %>
+    </div>
+
+
+  <div class="actions">
+    <%= f.submit '投稿画面に戻る', name: 'back' %>
+  </div>
+  <div class="actions">
+    <%= f.submit '投稿する' %>
+  </div>
+<% end %>

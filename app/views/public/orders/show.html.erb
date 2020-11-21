@@ -1,2 +1,22 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h4>いやーん❤️あんまりみちゃだーめ❤</h4>
+<h4>あなたが購入した注文履歴の詳細ページよ</h4>
+
+
+<% @order.order_details.each do |order_detail| %>
+
+<span><%= order_detail.item.name %></span><br>
+<span>数量<%= order_detail.quantity %>個</span><br>
+<span>購入時価格(税込み)<%= order_detail.tax_in_price %>円</span><br>
+<span>作成ステータス<%= @PRODUCTION_STATUS[order_detail.production_status] %></span><br>
+<span><%= order_detail.created_at %></span><br>
+<span><%= order_detail.updated_at %></span><br>
+<% end %>
+
+<span>会員ID<%= @order.customer_id %></span><br>
+<span>配送先郵便番号<%= @order.postal_code %></span><br>
+<span>配送先<%= @order.address %></span><br>
+<span>配送先氏名<%= @order.name %></span><br>
+<span>送料<%= @order.postage %>円</span><br>
+<span>合計金額<%= @order.total_price %>円</span><br>
+<span>お支払い方法<%= @PAYMENT_METHOD[@order.payment_method] %></span><br>
+<span>受注ステータス<%= @ORDER_STATUS[@order.order_status] %></span><br>

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :delivery_addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     get 'customers/my_page' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
@@ -38,8 +38,8 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     post 'orders' => 'orders#create'
     get 'orders/thanks' => 'orders#thanks'
-    get 'orders' => 'orders#index'
-    get 'orders/:id' => 'orders#show'
+    get 'orders' => 'orders#index', as: 'orders_history'
+    get 'orders/:id' => 'orders#show', as: 'orders_history_detail'
     resources :cart_items,only: [:index,:update,:create,:destroy] do
       collection do
         delete '/' => 'cart_items#all_destroy'

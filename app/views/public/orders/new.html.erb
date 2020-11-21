@@ -49,8 +49,7 @@
 
 <h1>配送先住所</h1>
 <div id="order_address">
-<%= render 'public/addresses/order_address'
-                  ,order: @order,address: @address,customer_name: @address.last_name + @address.first_name %>
+<%= render 'public/addresses/order_address',order: @order,address: @address,customer_name: @address.last_name + @address.first_name %>
 </div>
 
 

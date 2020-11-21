@@ -3,9 +3,19 @@
 
     <h1><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h1>
     
+      <% if @customer.errors.any? %>
+        <%= @customer.errors.count %>件のエラーが発生しました
+        <% @customer.errors.full_messages.each do |message| %>
+        <%= message %>
+        <% end %>
+      <% end %>
+      
     <div class="form-horizontal">
       <%= form_with model:@customer, url:admins_customer_path, local: true do |f| %>
-        <div>会員ID　<%= @customer.id %></div>
+        <div class="form-group">
+          <%= f.label "会員ID", class: "col-sm-4 control-label" %>
+          <%= f.label @customer.id %>
+        </div>
         <div class="form-group">
           <%= f.label "氏名", class: "col-sm-4 control-label" %>
           <div class="col-sm-8" >

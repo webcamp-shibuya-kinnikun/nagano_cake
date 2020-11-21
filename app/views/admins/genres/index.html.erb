@@ -8,14 +8,7 @@
       </ul>
     </div>
   <% end %>
-
-<% @genres.each do |genre| %>
-<%= genre.name %>
-<%= genre.is_valid %>
-<%= link_to "Edit", edit_admins_genre_path(genre), class: "btn btn-success"%>
-<% end %>
-
-
+  
 <h1>ジャンル登録欄</h1>
       <!-- form_with部分 -->
 
@@ -30,3 +23,24 @@
       <%= f.submit 'ジャンル登録ボタン', class: "btn btn-primary col-lg-12" %>
 
     <% end %>
+    
+<table class="table">
+			<thead>
+				<tr>
+		  		<th>ジャンル</th>
+					<th>状態</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @genres.each do |genre| %>
+					<tr>
+						<td><%= genre.name %></td>
+						<td><%= genre.is_valid %></td>
+						<td><%= link_to "Edit", edit_admins_genre_path(genre), class: "btn btn-success"%></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+

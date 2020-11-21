@@ -27,52 +27,30 @@
     </div>
   <% end %>
 
-  <div>
-    <% @customer_addresses.each do |customer_address| %>
-    <br>
-      <div class="field">
-        <%= customer_address.name %>
-      </div>
-      <div class="field">
-        <%= customer_address.postal_code %>
-      </div>
-      <div class="field">
-        <%= customer_address.address %>
-      </div>
-    <% end %>
-  </div>
 
-<div><%= form_with model: @adresses do |adress| %>
-  <%= adress.text_area :name %>
-  <%= adress.text_area :postal_code %>
-  <%= adress.text_area :address  %>
-  <%= adress.submit '送信'%>
+<!--住所登録一覧-->
+<h1>配送先住所一覧</h1>
+<div id="address_itiran">
+   <%= render 'public/addresses/itiran', customer_addresses: @customer_addresses %>
+</div>
+
+
+<h1>配送先住所追加</h1>
+<div class="posts">
+  <%= form_for(@adresses,:url => { action: "create2",controller: "addresses"}, remote: true) do |adress| %>
+    <%= adress.text_field :name ,placeholder: "名前", id:"name"%>
+    <%= adress.text_field :postal_code ,placeholder: "郵便番号",id:"postal_code"%>
+    <%= adress.text_field :address  ,placeholder: "住所",id:"address"%>
+    <%= adress.submit '送信' , class: 'form-submit'%>
 <% end %>
 </div>
 
 
 
+<h1>配送先住所</h1>
+<div id="order_address">
+<%= render 'public/addresses/order_address'
+                  ,order: @order,address: @address,customer_name: @address.last_name + @address.first_name %>
+</div>
 
-  <h1>配送先住所</h1>
-  <%= form_for @order,:url => { action: "confirm"} do |f| %>
-    <br>
-      <div class="field">
-        <%= f.label :氏名 %>
-        <%= f.text_field :name, size: 40 %>
-      </div>
-      <div class="field">
-        <%= f.label :郵便番号 %>
-        <%= f.text_field :postal_code, rows: 3, cols: 40 %>
-      </div>
-      <div class="field">
-        <%= f.label :住所 %>
-        <%= f.text_area :address, rows: 3, cols: 40 %>
-      </div>
-      <div class="field">
-        <%= f.label :お支払い方法 %>
-        <%= f.select(:payment_method, [['選択して下さい', ''],['クレジットカード', 0],['銀行振込', 1]]) %>
-      </div>
-        <div class="actions">
-          <%= f.submit '注文内容の確認' %>
-        </div>
-  <% end %>
+

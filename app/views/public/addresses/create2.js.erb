@@ -1,0 +1,4 @@
+$("#name").val('');
+$("#postal_code").val('');
+$("#address").val('');
+$('#address_itiran').html("<%= j(render partial: 'public/addresses/itiran', locals: {customer_addresses: @customer_addresses}) %>");

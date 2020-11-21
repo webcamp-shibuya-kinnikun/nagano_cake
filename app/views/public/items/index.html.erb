@@ -1,11 +1,18 @@
-<h1>ジャンル</h1>
+<div calss="row">
+  
+  <div class="col-xs-3">
+    <h1>ジャンル</h1>
+  </div>
 
-
-<h1>商品一覧(全<%= @items.count %>件)</h1>
-<% @items.each do |item| %>
-<div>
-  image
-  <p><%= link_to item.name, item_path(item) %></p>
-  <p>¥<%= item.tax_out_price %></p>
+  <div class="col-xs-9">
+    <h1>商品一覧(全<%= @items.count %>件)</h1>
+    <% @items.each do |item| %>
+    <div class="pull-left">
+      <%= attachment_image_tag(item, :image, size: "150x100", fallback: "no_image.jpg") %>
+      <p><%= link_to item.name, item_path(item) %></p>
+      <p>¥<%= item.tax_out_price.to_s(:delimited) %></p>
+    </div>
+    <% end %>
+  </div>
+  
 </div>
-<% end %>

@@ -5,13 +5,10 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items
-<<<<<<< HEAD
   has_many :items, through: :cart_items
   has_many :orders
   has_many :addresses
-=======
-  has_many :address
->>>>>>> bb47d1fee3e7fee88a53d3cdc82e9b15649c1163
+
 
   validates :first_name, presence: true
   validates :last_name, presence: true

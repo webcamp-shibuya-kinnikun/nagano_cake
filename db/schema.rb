@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2020_11_20_133345) do
     t.index ["customer_id"], name: "index_addresses_on_customer_id"
   end
 
-
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false　
     t.string "encrypted_password", default: "", null: false

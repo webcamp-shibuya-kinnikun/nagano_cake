@@ -1,0 +1,25 @@
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Zip</th>
+        <th scope="col">Address</th>
+        <th scope="col">選択</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% customer_addresses.each do |c_address| %>
+      <tr>
+        <td><%= c_address.name %></td>
+        <td><%= c_address.postal_code %></td>
+        <td><%= c_address.address %></td>
+        <th scope="row">
+            <p>
+              <%=link_to "選択", addresses_create3_path(c_address), method: :post, remote: true %>
+            </p>
+        </th>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>

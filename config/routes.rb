@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
+    post 'addresses/create2' => 'addresses#create2'
+    post 'addresses/:address_id/create3' => 'addresses#create3', as: 'addresses_create3'
     get 'customers/my_page' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
     patch 'customers' => 'customers#update'

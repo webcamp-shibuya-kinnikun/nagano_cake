@@ -1,0 +1,23 @@
+  <%= form_for order,:url => { action: "confirm",controller: "orders"} do |f| %>
+    <div class="field">
+      <%= f.label :氏名 %>
+      <%= f.text_field :name, size: 40 ,value: customer_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :郵便番号 %>
+      <%= f.text_field :postal_code, rows: 3, cols: 40 ,value: address.postal_code %>
+    </div>
+    <div class="field">
+      <%= f.label :住所 %>
+      <%= f.text_area :address, rows: 3, cols: 40 ,value: address.address %>
+    </div>
+
+      <div class="field">
+      <%= f.label :お支払い方法 %>
+      <%= f.select(:payment_method, [['選択して下さい', ''],['クレジットカード', 0],['銀行振込', 1]]) %>
+    </div>
+      <div class="actions">
+        <%= f.submit '注文内容の確認' %>
+      </div>
+  <% end %>

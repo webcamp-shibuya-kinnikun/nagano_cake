@@ -1,8 +1,10 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new()
+    # ユーザーの配送先住所の全てを取得
     @customer_addresses = Address.where(customer_id: current_customer.id)
     @adresses = Address.new()
+    @address = Customer.find(current_customer.id)
     common()
   end
 

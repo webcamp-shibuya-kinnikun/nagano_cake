@@ -1,12 +1,10 @@
 <header class="navbar navbar-fixed-top" >
     <div class="container">
-      <nav class='nav navbar-nav navbar-left' >
-        <span>LOGO</span>
-      </nav>
+      <nav class='nav navbar-nav navbar-left' >LOGO</nav>
       <nav>
         <ul class="nav navbar-nav navbar-right">
           <% if customer_signed_in? %>
-            <li>ようこそ、<%= current_customer.last_name %>さん！</li>
+            <li style="padding-top:15px">ようこそ、<%= current_customer.last_name %>さん！</li>
             <li><%= link_to 'マイページ', customers_my_page_path %></li>
             <li><%= link_to '商品一覧', items_path %></li>
             <li><%= link_to 'カート', cart_items_path %></li>

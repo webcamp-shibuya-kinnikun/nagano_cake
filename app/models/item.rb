@@ -12,8 +12,9 @@ class Item < ApplicationRecord
   validates :explanation, presence: true
   validates :is_sale, presence: true,
   inclusion: { in: [true, false] }
-
-
-
-
+  
+  def self.search(content)
+    Item.where("name LIKE ?", "%#{content}%")
+  end
+  
 end

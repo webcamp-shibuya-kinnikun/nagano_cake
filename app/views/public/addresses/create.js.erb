@@ -1,9 +1,8 @@
-<% if @delivary_address.errors.any? %>
-  $('#error').html("<%= j(render 'shared/error_messages', resource: @delivary_address) %>");
+<% if @address.errors.any? %>
+  $('#error').html("<%= j(render 'layouts/error_messages', resource: @address) %>");
 <% else %>
-  $('#create').html("<%= j(render 'public/delivary_addresses/delivary', delivary_addresses: @delivary_addresses) %>");
+  $('#create').html("<%= j(render 'public/addresses/delivery', addresses: @addresses) %>");
   $('#create').show();
-  $('input').val("");
   $('#error_explanation').hide();
   $('#flash').html("<%= j(render 'layouts/flash') %>");
   $('#flash').show();

@@ -1,9 +1,16 @@
 <h1>商品詳細</h1>
+<%= attachment_image_tag @item, :image, :fill, 300, 200, class: "pull-left profile-thumb" %>
 
-<%= @item.name %>
-<%= @item.explanation %>
-<%= @item.genre.name %>
-<%= @item.tax_out_price %>
-<%= attachment_image_tag @item, :image, :fill, 40, 40, class: "pull-left profile-thumb" %>
+<p>商品名　<%= @item.name %></p>
+<p>商品説明　<%= @item.explanation %></p>
+<p>ジャンル　<%= @item.genre.name %></p>
+<p>税込価格（税抜価格）<%= tax_price(@item.tax_out_price).to_s(:delimited) %>　(<%= @item.tax_out_price.to_s(:delimited) %>)円</p>
+<p>販売ステータス　
+  <% if @item.is_sale == true %>
+    販売中
+  <% else %>
+    販売停止中
+  <% end %>
+</p>
 
 <%= link_to "Edit", edit_admins_item_path(@item), class: "btn btn-success"%>

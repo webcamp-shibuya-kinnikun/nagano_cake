@@ -19,10 +19,15 @@
             <td><%= link_to i.name, admins_item_path(i)  %></td>
             <td><%= i.tax_out_price %></td>
             <td><%= i.genre.name %> </td>
-            <td><%= i.is_sale %></td>
+            <td>
+            	<% if i.is_sale == true %>
+            		販売中
+            	<% else %>
+            		販売停止中
+            	<% end %>
+            </td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
-		
-		
+

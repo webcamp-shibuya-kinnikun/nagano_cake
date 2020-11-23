@@ -5,5 +5,6 @@ class Public::HomesController < ApplicationController
   end
 
   def about
+    @random = Item.all.sample(7)
   end
 end

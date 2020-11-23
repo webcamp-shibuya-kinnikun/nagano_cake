@@ -6,7 +6,7 @@ class Admins::ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new()
+    @item = Item.new
     @genre = Genre.all
 
   end
@@ -14,7 +14,7 @@ class Admins::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admins_item_path (@item.id)
+      redirect_to admins_item_path(@item)
     else
       @genre = Genre.all
       render new_admins_item_path
@@ -38,7 +38,6 @@ class Admins::ItemsController < ApplicationController
     else
       @genre = Genre.all
       render template: 'admins/items/edit'
-
     end
   end
 

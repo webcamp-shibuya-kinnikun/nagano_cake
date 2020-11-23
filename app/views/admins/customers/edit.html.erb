@@ -1,20 +1,20 @@
 <div class="row">
   <div class="col-xs-offset-1 col-xs-8">
 
-    <h1><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h1>
-    
+    <h2><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h2>
+
       <% if @customer.errors.any? %>
         <%= @customer.errors.count %>件のエラーが発生しました
         <% @customer.errors.full_messages.each do |message| %>
         <%= message %>
         <% end %>
       <% end %>
-      
+
     <div class="form-horizontal">
       <%= form_with model:@customer, url:admins_customer_path, local: true do |f| %>
         <div class="form-group">
           <%= f.label "会員ID", class: "col-sm-4 control-label" %>
-          <%= f.label @customer.id %>
+          <span style="margin: 15px 0 0 15px"><%= @customer.id %></span>
         </div>
         <div class="form-group">
           <%= f.label "氏名", class: "col-sm-4 control-label" %>
@@ -23,7 +23,7 @@
             <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
           </div>
         </div>
-    
+
         <div class="form-group">
           <%= f.label "フリガナ", class: "col-sm-4 control-label" %>
           <div class="col-sm-8" >
@@ -31,35 +31,35 @@
             <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %>
           </div>
         </div>
-    
+
         <div class="form-group">
           <%= f.label "郵便番号", class: "col-sm-4 control-label" %>
           <div class="col-sm-8">
             <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
           </div>
           </div>
-    
+
         <div class="form-group">
           <%= f.label "住所", class: "col-sm-4 control-label" %>
           <div class="col-sm-8">
             <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
           </div>
         </div>
-    
+
         <div class="form-group">
           <%= f.label "電話番号(ハイフンなし)", class: "col-sm-4 control-label"%>
           <div class="col-sm-8">
             <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
           </div>
         </div>
-    
+
         <div class="form-group">
           <%= f.label "メールアドレス", class: "col-sm-4 control-label" %>
           <div class="col-sm-8">
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
         </div>
-    
+
         <div class="form-check">
           <%= f.label "会員ステータス", class: "col-sm-4 control-label" %>
           <div class="col-sm-8">
@@ -67,13 +67,13 @@
             <%= f.radio_button :is_valid, :true %>退会済み
           </div>
         </div>
-    
+
         <div class="actions">
           <%= f.submit "変更を保存する", class: "btn btn-info" %>
         </div>
       <% end %>
-      
+
     </div>
   </div>
-</div> 
+</div>
 

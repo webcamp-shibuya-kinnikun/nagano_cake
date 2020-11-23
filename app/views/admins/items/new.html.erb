@@ -1,28 +1,45 @@
-<h1>商品新規登録</h1>
- <% if @item.errors.any? %>
-    <div style="color: red">
-      <%= @item.errors.count %>errors prohibited this obj from being saved:<br>
-      <ul>
-        <% @item.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="row">
+  
+  <div>
+    <h2>新規登録</h2>
+      <% if @item.errors.any? %>
+        <div style="color: red">
+          <%= @item.errors.count %>errors prohibited this obj from being saved:<br>
+          <ul>
+            <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+      <% end %>
+          </ul>
+        </div>
+      <% end %>
+  </div>
+  
+  <div class="col-xs-10">
+    <%= form_with model:@item, url:admins_items_path, local:true, class:"item-box" do |f| %>
+    
+      <div class="item-image">
+        <%= attachment_image_tag(@item, :image, size: "300x200", fallback: "no_image.jpg") %>
+        <%= f.attachment_field :image, class:"col-lg-12" %>
+      </div>
+      
+      <div class="item-content">
+        <h4>商品名</h4>
+          <%= f.text_field :name, class:"col-lg-12" %>
+        <h4>商品紹介</h4>
+          <%= f.text_area :explanation, class:"col-lg-12" %>
+        <h4>ジャンル</h4>
+          <%= f.collection_select :genre_id, @genre, :id, :name, { include_blank: '--選択してください--'}%>
+        <h4>税抜価格</h4>
+          <%= f.number_field :tax_out_price, class:"col-lg-10" %>円
+        <h4>在庫</h4>
+          <%= f.radio_button :is_sale, false %>在庫なし
+          <%= f.radio_button :is_sale, true, checked: true %>在庫あり<br>
+          <%= f.submit '新規保存', class:"btn btn-primary col-lg-3" %>
+      </div>
+    <% end %>
+  </div>
 
- <%= form_with model:@item, url:admins_items_path, local:true do |f| %>
-    <h4>画像</h4>
-      <%= f.attachment_field :image, class:"col-lg-12" %>
-    <h4>商品名</h4>
-      <%= f.text_field :name, class:"col-lg-12" %>
-    <h4>商品紹介</h4>
-      <%= f.text_area :explanation, class:"col-lg-12" %>
-    <h4>ジャンル</h4>
-      <%= f.collection_select :genre, Genre.all, :id, :name, { include_blank: '--選択してください--'}%>
-    <h4>税抜価格</h4>
-        <%= f.number_field :tax_out_price, class:"col-lg-12" %>円
-    <h4>在庫</h4>
-      <%= f.radio_button :is_sale, false %>在庫なし
-      <%= f.radio_button :is_sale, true, checked: true %>在庫あり
-      <%= f.submit '新規保存', class:"btn btn-primary col-lg-12" %>
-<% end %>
+</div>
+
+
+

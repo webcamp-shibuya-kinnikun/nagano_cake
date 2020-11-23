@@ -7,5 +7,11 @@
     また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。</br>
     ぜひご注文ください。</br>
   </h3>
-  <h3>image画像</h3>
+  <div style="margin:0 auto">
+    <% @random.each do |item| %>
+      <div class="pull-left" style="padding:10px 10px 0 0">
+        <%= attachment_image_tag(item, :image, size: "150x100", fallback: "no_image.jpg") %>
+      </div>
+    <% end %>
+  </div>
 </div>

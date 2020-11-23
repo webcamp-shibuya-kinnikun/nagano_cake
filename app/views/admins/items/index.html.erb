@@ -17,7 +17,7 @@
 					<tr>
 					  <td><%= i.id %></td>
             <td><%= link_to i.name, admins_item_path(i)  %></td>
-            <td><%= i.tax_out_price %></td>
+            <td><%= i.tax_out_price.to_s(:delimited) %></td>
             <td><%= i.genre.name %> </td>
             <td>
             	<% if i.is_sale == true %>

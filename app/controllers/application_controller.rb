@@ -31,9 +31,6 @@ class ApplicationController < ActionController::Base
       items_path
     end
 
-  # def after_sign_in_path_for(resource)
-  #   public_items_index_path
-  # end
   # sign_in後のAdminとCustomerの遷移先の記述
   def after_sign_in_path_for(resource)
     case resource
@@ -42,6 +39,10 @@ class ApplicationController < ActionController::Base
     when Customer
       items_path
     end
+  end
+  
+  def after_sign_out_path_for(resource)
+    new_customer_session_path
   end
 
 end

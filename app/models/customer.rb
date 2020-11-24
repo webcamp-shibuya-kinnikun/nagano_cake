@@ -19,6 +19,12 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true
   validates :email, presence: true
 
+  def self.search(content)
+    Customer.where('last_name LIKE ?', "%#{content}%")
+      .or(Customer.where('first_name LIKE ?', "%#{content}%"))
+  end
+
+
   def active_for_authentication?
     super && (self.is_valid == false)
   end

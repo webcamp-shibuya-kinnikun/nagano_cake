@@ -1,4 +1,4 @@
-<h1>購入画面</h1>
+<h1 class="kuma">購入画面</h1>
 
 <h4>購入品</h4>
 
@@ -29,13 +29,13 @@
 
 
 <!--住所登録一覧-->
-<h1>配送先住所一覧</h1>
+<h1 class="kuma">配送先住所一覧</h1>
 <div id="address_itiran">
    <%= render 'public/addresses/itiran', customer_addresses: @customer_addresses %>
 </div>
 
 
-<h1>配送先住所追加</h1>
+<h1 class="kuma">配送先住所追加</h1>
 <div class="posts">
   <%= form_for(@adresses,:url => { action: "create2",controller: "addresses"}, remote: true) do |adress| %>
     <%= adress.text_field :name ,placeholder: "名前", id:"name"%>

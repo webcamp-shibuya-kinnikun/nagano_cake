@@ -1,7 +1,12 @@
 <div class="row">
   <div class='col-xs-12'>
     <h2 class="h2_head text-center">管理者画面</h2>
-    <p>本日の注文件数　◯件</p>
-
+    <p class="order-count">本日の注文件数
+			<span>
+				<%= link_to today_order_index_admins_orders_path, class: "btn-link" do %>
+				<%= @orders.count %>件
+				<% end %>
+			</span>
+		</p>
   </div>
 </div>

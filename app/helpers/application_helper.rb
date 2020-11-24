@@ -17,9 +17,21 @@ module ApplicationHelper
   def total_price(totals)
     price = 0
     totals.each do |total|
-      price  +=  tax_out_price(total)
+      price  +=  sub_price(total)
     end
     return price
   end
 
+  # 請求額の計算
+  def billing(order)
+    total_price(current_cart) + order.postage
+  end
+
+  def full_name(customer)
+    customer.last_name + customer.first_name
+  end
+
+  def full_address(customer)
+    "#{customer.postal_code} #{customer.address}"
+  end
 end

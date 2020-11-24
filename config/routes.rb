@@ -20,11 +20,18 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    resources :orders, only: [:index, :show, :update]
-    resources :orders_details, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update, :destroy]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :orders, only: [:index, :show, :update] do
+      member do
+        get :applicable_customer_index
+      end
+      collection do
+        get :today_order_index
+      end
+    end
+    resources :orders_datails,only: [:update]
   end
 
   scope module: :public do
@@ -33,8 +40,8 @@ Rails.application.routes.draw do
     post 'addresses/create2' => 'addresses#create2'
     post 'addresses/:address_id/create3' => 'addresses#create3', as: 'addresses_create3'
     get 'customers/my_page' => 'customers#show'
-    get 'customers/edit' => 'customers#edit'
-    patch 'customers' => 'customers#update'
+    get 'customer/edit' => 'customers#edit'
+    put 'customer' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
     get 'orders/new' => 'orders#new'

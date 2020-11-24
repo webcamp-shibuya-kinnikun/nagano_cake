@@ -1,4 +1,4 @@
-  <table class="table">
+   <table class="table">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -16,7 +16,7 @@
         <td><%= c_address.address %></td>
         <th scope="row">
             <p>
-              <%=link_to "選択", addresses_create3_path(c_address), method: :post, remote: true %>
+              <%=link_to "選択", addresses_create3_path(c_address), method: :post, remote: true, class: "btn btn-success active" %>
             </p>
         </th>
       </tr>

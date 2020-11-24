@@ -18,6 +18,6 @@
       <%= f.select(:payment_method, [['クレジットカード', 0],['銀行振込', 1]]) %>
     </div>
       <div class="actions">
-        <%= f.submit '注文内容の確認' %>
+        <%= f.submit '注文内容の確認', class: "btn btn-info" %>
       </div>
   <% end %>

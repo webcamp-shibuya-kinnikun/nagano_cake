@@ -1,14 +1,15 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new()
-    # ユーザーの配送先住所の全てを取得
-    @customer_addresses = Address.where(customer_id: current_customer.id)
-    @adresses = Address.new()
-    @address = Customer.find(current_customer.id)
     common()
   end
 
   def common
+    # ユーザーの配送先住所の全てを取得
+    @customer_addresses = Address.where(customer_id: current_customer.id)
+    @adresses = Address.new()
+    @address = Customer.find(current_customer.id)
+
     @cart_item = CartItem.where(customer_id: current_customer.id)
     @postage = POSTAGE
     item_price=0
@@ -25,10 +26,13 @@ class Public::OrdersController < ApplicationController
 
 
   def confirm
+    @payment_method = PAYMENT_METHOD
     common()
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    render :new if @order.invalid?
+    if @order.invalid?
+     render :new
+    end
   end
 
 
@@ -42,7 +46,6 @@ class Public::OrdersController < ApplicationController
 
       if params[:back]
         # 戻るボタンを押した時
-
         render :new
       elsif @order.save
         # セーブ成功
@@ -74,11 +77,16 @@ class Public::OrdersController < ApplicationController
     @orders = Order.where(customer_id: current_customer.id)
   end
 
+
   def show
     @PAYMENT_METHOD = PAYMENT_METHOD
     @PRODUCTION_STATUS = PRODUCTION_STATUS
     @ORDER_STATUS = ORDER_STATUS
-    @order = Order.find(params[:id])
+    if params[:id] =~ /^[0-9]+$/
+      @order = Order.find(params[:id])
+    else
+    redirect_to orders_new_path()
+    end
   end
 
   private

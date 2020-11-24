@@ -1,5 +1,12 @@
 <h4>あなたの注文履歴よん❤</h4>
 
+
 <% @orders.each do |order| %>
-NO.<div><%= link_to order.id, orders_history_detail_path(order)  %></div>
+
+<table class="table">
+		<tr>
+			<th class="info"><code><%= link_to order.created_at.strftime('%Y/%m/%d'), orders_history_detail_path(order) %></code></th>
+		</tr>
+</table>
+
 <% end %>

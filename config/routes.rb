@@ -45,11 +45,11 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
     get 'orders/new' => 'orders#new'
-    post 'orders/confirm' => 'orders#confirm'
     post 'orders' => 'orders#create'
     get 'orders/thanks' => 'orders#thanks'
     get 'orders' => 'orders#index', as: 'orders_history'
     get 'orders/:id' => 'orders#show', as: 'orders_history_detail'
+    post 'orders/confirm' => 'orders#confirm'
     resources :cart_items,only: [:index,:update,:create,:destroy] do
       collection do
         delete '/' => 'cart_items#all_destroy'

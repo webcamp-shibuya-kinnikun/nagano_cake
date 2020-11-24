@@ -28,14 +28,15 @@
     </div>
     <div class="field">
       <%= f.label :お支払い方法 %>
-      <%= f.select(:payment_method, [['クレジットカード', 0],['銀行振込', 1]]) %>
+      <%= @payment_method[@order.payment_method] %>
+      <%= f.hidden_field :payment_method, rows: 3, cols: 40,readonly: true %>
     </div>
 
 
   <div class="actions">
-    <%= f.submit '投稿画面に戻る', name: 'back' %>
+    <%= f.submit 'カートに戻る', name: 'back',class: "btn btn-info" %>
   </div>
   <div class="actions">
-    <%= f.submit '投稿する' %>
+    <%= f.submit '購入する',class: "btn btn-warning active" %>
   </div>
 <% end %>

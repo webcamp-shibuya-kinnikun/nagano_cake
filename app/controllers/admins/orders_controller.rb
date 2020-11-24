@@ -17,6 +17,7 @@ class Admins::OrdersController < ApplicationController
   end
 
 	def show
+		@PAYMENT_METHOD = PAYMENT_METHOD
 		@order = Order.find(params[:id])
 		@order_details = @order.order_details
 	end

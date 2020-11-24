@@ -13,7 +13,7 @@
       <p>¥<%= @price %>(税込)</p>
         <%= form_with model:@cart_item, local: true, url: cart_items_path do |f| %>
           <%= f.hidden_field :item_id, value: @item.id %>
-          <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+          <%= f.select :quantity, options_for_select((1..10).to_a)%>
           <%= f.submit "カートに入れる", class: "btn btn-info" %>
         <% end %>
     </div>

@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-8">
+
+
+		<% if @model == "customer" %>
+		  <h2>Customers search for "<%= @content %>"</h2>
+		  <table class="table">
+				<thead>
+					<tr>
+						<th>name</th>
+						<th>ステータス</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @customers.each do |customer| %>
+					<tr>
+						<td><%= customer.last_name %> <%= customer.first_name %></td>
+						<td>
+							<% if customer.is_valid == false %>
+								有効
+							<% else %>
+								退会済
+							<% end %>
+						</td>
+						<td><%= link_to "顧客詳細", admins_customer_path(customer) %></td>
+						<td><%= link_to "顧客情報編集", edit_admins_customer_path(customer) %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+		<% elsif @model == "item" %>
+		  <h2>Items search for "<%= @content %>"</h2>
+		  <table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th>Item</th>
+						<th>税抜価格</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+
+			  <tbody>
+					<% @items.each do |item| %>
+					<tr>
+						<td><%= item.name %></td>
+						<td><%= item.tax_out_price %>円</td>
+						<td><%= link_to "アイテム詳細", item_path(item) %></td>
+						<td><%= link_to "アイテム編集", edit_admins_item_path(item) %></td>
+					</tr>
+					<% end %>
+			  </tbody>
+		</table>
+		<% else %>
+		<% end %>
+
+	</div>
+</div>

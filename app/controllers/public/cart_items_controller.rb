@@ -32,7 +32,7 @@ class Public::CartItemsController < ApplicationController
       @item = Item.find(params[:cart_item][:item_id])
       @cart_item = CartItem.new
       flash[:alert] = "個数を選択してください"
-      render ("customer/items/show")
+      render ("public/items/show")
     end
   end
 

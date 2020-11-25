@@ -12,7 +12,6 @@ class Public::ItemsController < ApplicationController
   def show
     @genres = Genre.all
     @item = Item.find(params[:id])
-    @price = (@item.tax_out_price * 1.1).floor
     @cart_item = CartItem.new
   end
 

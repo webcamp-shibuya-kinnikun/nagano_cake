@@ -1,12 +1,35 @@
 <h4>あなたの注文履歴よん❤</h4>
-
-
-<% @orders.each do |order| %>
-
 <table class="table">
-		<tr>
-			<th class="info"><code><%= link_to order.created_at.strftime('%Y/%m/%d'), orders_history_detail_path(order) %></code></th>
+	<thead>
+    <tr class="info">
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>支払金額</th>
+      <th>ステータス</th>
+      <th>注文詳細</th>
+     </tr>
+  </thead>
+  <tbody>
+  	<% @orders.each do |order| %>
+  	<tr>
+			<th class="info"><%= order.created_at.strftime('%Y/%m/%d') %></th>
+			<th>
+				<%= order.postal_code %><br>
+				<%= order.address %><br>
+				<%= order.name %>
+			</th>
+			<th>
+				<% order.order_details.each do |order_detail| %>
+					<%= order_detail.item.name %><br>
+				<% end %>
+			</th>
+			<th><%= order.total_price.to_s(:delimited) %></th>
+			<th><%= order.order_status %></th>
+			<th><%= link_to "詳細確認", orders_history_detail_path(order) ,class: "btn btn-info" %></th>
 		</tr>
+		<% end %>
+	</tbody>
 </table>
 
-<% end %>
+

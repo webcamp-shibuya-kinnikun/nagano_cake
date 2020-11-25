@@ -12,35 +12,35 @@
 #   password: '111111'
 #  )
 
-#  Admin.create!(
-#   email: "admin@admin.com",
-#   password: "111111"
-#  )
+  Admin.create!(
+  email: "admin@admin.com",
+  password: "111111"
+  )
 
-#  Genre.create!(
-#   [
-#      {
-#       id: 1,
-#       name: "ケーキ"
-#      },
+  Genre.create!(
+  [
+      {
+      id: 1,
+      name: "ケーキ"
+      },
 
-#      {
-#       id: 2,
-#       name: "プリン"
-#      },
+      {
+      id: 2,
+      name: "プリン"
+      },
 
-#      {
-#       id: 3,
-#       name: "焼き菓子"
-#      },
+      {
+      id: 3,
+      name: "焼き菓子"
+      },
 
-#      {
-#       id: 4,
-#       name: "キャンディ"
-#      }
+      {
+      id: 4,
+      name: "キャンディ"
+      }
 
-#   ]
-#  )
+  ]
+  )
 
 
 #   create_table "genres", force: :cascade do |t|
@@ -58,59 +58,59 @@
 #      t.boolean "is_sale", default: false, null: false
 #      t.boolean記述の仕方は0 or 1　default: false, null: false　の場合はtrue or falseで記述
 
-# Item.create!(
-#   [
-#     {
-#       genre_id: 1,
-#       id: 1,
-#       name: "チョコケーキ",
-#       explanation: "チョコの香りが素敵ですよ",
-#       tax_out_price: 500,
-#       image_id:"sample",
-#       is_sale: true
-#     },
+Item.create!(
+  [
+    {
+      genre_id: 1,
+      id: 1,
+      name: "チョコケーキ",
+      explanation: "チョコの香りが素敵ですよ",
+      tax_out_price: 500,
+      image_id:"sample",
+      is_sale: true
+    },
 
-#     {
-#       genre_id: 1,
-#       id: 2,
-#       name: "イチゴケーキ",
-#       explanation: "チョコの香りが素敵ですよ",
-#       tax_out_price: 500,
-#       image_id: "sample",
-#       is_sale: true
-#     },
+    {
+      genre_id: 1,
+      id: 2,
+      name: "イチゴケーキ",
+      explanation: "チョコの香りが素敵ですよ",
+      tax_out_price: 500,
+      image_id: "sample",
+      is_sale: true
+    },
 
-#     {
-#       genre_id: 2,
-#       id: 3,
-#       name: "抹茶プリン",
-#       explanation: "抹茶の香りが素敵ですよ",
-#       tax_out_price: 300,
-#       image_id: "sample",
-#       is_sale: true
-#     },
+    {
+      genre_id: 2,
+      id: 3,
+      name: "抹茶プリン",
+      explanation: "抹茶の香りが素敵ですよ",
+      tax_out_price: 300,
+      image_id: "sample",
+      is_sale: true
+    },
 
-#     {
-#       genre_id: 3,
-#       id: 4,
-#       name: "フィナンシェ",
-#       explanation: "上品な甘さが大人気",
-#       tax_out_price: 400,
-#       image_id: "sample",
-#       is_sale: true
-#     },
+    {
+      genre_id: 3,
+      id: 4,
+      name: "フィナンシェ",
+      explanation: "上品な甘さが大人気",
+      tax_out_price: 400,
+      image_id: "sample",
+      is_sale: true
+    },
 
-#     {
-#       genre_id: 4,
-#       id: 5,
-#       name: "龍角散",
-#       explanation: "あなたの風邪はどこから?喉から？",
-#       tax_out_price: 800,
-#       image_id: "sample",
-#       is_sale: true
-#      }
-#   ]
-#   )
+    {
+      genre_id: 4,
+      id: 5,
+      name: "龍角散",
+      explanation: "あなたの風邪はどこから?喉から？",
+      tax_out_price: 800,
+      image_id: "sample",
+      is_sale: true
+      }
+  ]
+  )
 
 #   CartItem.create!(
 #   [

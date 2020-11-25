@@ -1,16 +1,16 @@
 <div class="row">
-  
+
   <%= render "search", genres: @genres %>
-  
+
   <div class="col-xs-9 item-box">
     <div class="item-image" style="padding-top:20px">
       <%= attachment_image_tag(@item, :image, size: "300x200", fallback: "no_image.jpg") %>
     </div>
-    
+
     <div class="item-content" style="padding-top:20px">
       <h1><%= @item.name %></h1>
       <p><%= @item.explanation %></p>
-      <p>¥<%= @price %>(税込)</p>
+      <p>¥<%= tax_price(@item.tax_out_price) %>(税込)</p>
         <%= form_with model:@cart_item, local: true, url: cart_items_path do |f| %>
           <%= f.hidden_field :item_id, value: @item.id %>
           <%= f.select :quantity, options_for_select((1..10).to_a)%>
@@ -18,5 +18,5 @@
         <% end %>
     </div>
   <div>
-    
+
 </div>

@@ -22,15 +22,21 @@ class Admins::OrdersController < ApplicationController
 		@order_details = @order.order_details
 	end
 
-	def update
-		@order = Order.find(params[:id])
-		if @order.update(order_params)
-		   flash[:success] = "注文ステータスを変更しました"
-		   redirect_to admins_orders_path(@order)
+  def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    # 注文ステータスが入金確認だったら、製作ステータスを製作待ちに変更
+    if order_params[:order_status] == "入金確認"
+			@order.order_details.each do |order_detail|
+				order_detail.update(production_status: "製作待ち")
+			end
+			flash[:success] = "注文ステータスを変更しました。製作ステータスを製作待ちに変更しました。"
+			redirect_to admins_order_path(@order)
 		else
-		   render "show"
-		end
-	end
+			flash[:success] = "注文ステータスを変更しました"
+			redirect_to admins_order_path(@order)
+    end
+  end
 
 	private
 	def order_params

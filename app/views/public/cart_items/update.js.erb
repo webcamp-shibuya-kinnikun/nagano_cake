@@ -1,4 +1,4 @@
-$('#tax_out_price-<%= @cart_item.id %>').html("¥<%= @price %>");
+$('#sub_price-<%= @cart_item.id %>').html("¥<%= @price %>");
 $('#total_price').html("¥<%= @total %>");
 $('#flash').html("<%= j(render 'layouts/flash') %>");
 $('#flash').show();

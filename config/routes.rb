@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :customers, only: [:index, :show, :edit, :update, :destroy]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update] do
       member do
         get :applicable_customer_index
@@ -35,8 +35,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    get '/about' => 'homes#about'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
-    resources :items, only: [:index, :show]
     post 'addresses/create2' => 'addresses#create2'
     post 'addresses/:address_id/create3' => 'addresses#create3', as: 'addresses_create3'
     get 'customers/my_page' => 'customers#show'
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     patch 'customer' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
+    resources :items, only: [:index, :show]
     get 'orders/new' => 'orders#new'
     post 'orders' => 'orders#create'
     get 'orders/thanks' => 'orders#thanks'
@@ -55,6 +56,5 @@ Rails.application.routes.draw do
         delete '/' => 'cart_items#all_destroy'
       end
     end
-    get '/about' => 'homes#about'
   end
 end

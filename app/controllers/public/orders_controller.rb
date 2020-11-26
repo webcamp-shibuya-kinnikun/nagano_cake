@@ -80,8 +80,6 @@ class Public::OrdersController < ApplicationController
 
   def show
     @PAYMENT_METHOD = PAYMENT_METHOD
-    @PRODUCTION_STATUS = PRODUCTION_STATUS
-    @ORDER_STATUS = ORDER_STATUS
     if params[:id] =~ /^[0-9]+$/
       @order = Order.find(params[:id])
     else

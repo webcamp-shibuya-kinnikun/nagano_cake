@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     post 'addresses/:address_id/create3' => 'addresses#create3', as: 'addresses_create3'
     get 'customers/my_page' => 'customers#show'
     get 'customer/edit' => 'customers#edit'
-    put 'customer' => 'customers#update'
+    patch 'customer' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
     get 'orders/new' => 'orders#new'

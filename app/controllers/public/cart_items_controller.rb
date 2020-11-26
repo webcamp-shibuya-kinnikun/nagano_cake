@@ -11,9 +11,10 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item.update(quantity: params[:cart_item][:quantity].to_i)
     flash.now[:success] = "#{@cart_item.item.name}の数量を変更しました"
-    @price = tax_out_price(@cart_item).to_s(:delimited)
+    @price = sub_price(@cart_item).to_s(:delimited)
     @cart_items = current_cart
     @total = total_price(@cart_items).to_s(:delimited)
+    # redirect_to cart_items_path
   end
 
   def create

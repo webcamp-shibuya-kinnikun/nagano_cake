@@ -40,7 +40,7 @@ class Public::AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-	  if @address.update(address_params)
+	  if @address.update(params_adresses)
      flash[:success] = "配送先を変更しました"
      redirect_to addresses_path
 	  else

@@ -21,7 +21,8 @@ body{
 }
 
 .navbar{
-   border-bottom: double 4px #FFC778;
+  border-bottom: double 4px #FFC778;
+  background-color:#ffffff;
 }
 
 .logo {
@@ -78,4 +79,36 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #FFC778;
+}
+
+.kuma {
+  position: relative;
+  padding: 1.5rem 2rem;
+  border-bottom: 3px solid #000;
+  border-left: 3px solid #000;
+  border-radius: 0 0 0 20px;
+}
+
+.kuma:before {
+  position: absolute;
+  right: 50px;
+  bottom: -21px;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 21px 21px 0 0;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+}
+
+.kuma:after {
+  position: absolute;
+  right: 54px;
+  bottom: -14px;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 14px 14px 0 0;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
 }

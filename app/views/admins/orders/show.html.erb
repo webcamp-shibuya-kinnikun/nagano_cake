@@ -25,7 +25,7 @@
 	        支払い方法
 	      </div>
 	      <div class="col-xs-8">
-	        <%= @order.payment_method %>
+	        <%= @PAYMENT_METHOD[@order.payment_method] %>
 	      </div>
 	    </div>
 
@@ -73,12 +73,12 @@
             <td class="text-right">
               ¥<%= sub_price(order_detail).to_s(:delimited) %>
             </td>
-            <%= form_for(order_detail, url: admins_orders_datail_path(order_detail)) do |f| %>
             <td>
+            <%= form_for(order_detail, url: admins_orders_datail_path(order_detail)) do |f| %>
             	<%= f.select :production_status, OrderDetail.production_statuses.keys, class: "order_status" %>
             	<%= f.submit '更新'  ,class: "btn btn-warning" %>
-            </td>
           　<% end %>
+          　</td>
           </tr>
 				<% end %>
 				</tbody>

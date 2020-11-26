@@ -41,8 +41,13 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  # 会員用
   def after_sign_out_path_for(resource)
     new_customer_session_path
   end
-
+  # 管理者用
+  def after_sign_out_path_for(resource)
+      new_admin_session_path
+  end
+  
 end

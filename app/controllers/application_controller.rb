@@ -36,9 +36,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # 管理者用のみリダイレクト
+
+  # sign_out後のAdminとCustomerの遷移先の記述
   def after_sign_out_path_for(resource)
+    case resource
+    when :admin, Admin
       new_admin_session_path
+    when :customer, Customer
+      new_customer_session_path
+    else
+      super
+    end
   end
-  
+
 end
